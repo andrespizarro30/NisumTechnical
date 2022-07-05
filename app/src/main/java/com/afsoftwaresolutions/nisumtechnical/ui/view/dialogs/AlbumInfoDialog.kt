@@ -3,14 +3,9 @@ package com.afsoftwaresolutions.nisumtechnical.ui.view.dialogs
 import android.app.Activity
 import android.net.Uri
 import android.view.View
-import android.widget.MediaController
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
-import androidx.lifecycle.LifecycleOwner
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.afsoftwaresolutions.nisumtechnical.R
 import com.afsoftwaresolutions.nisumtechnical.data.model.MusicInfoModel
-import com.afsoftwaresolutions.nisumtechnical.databinding.ActivityMainBinding
 import com.afsoftwaresolutions.nisumtechnical.databinding.AlbumInfoBinding
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -91,10 +86,12 @@ class AlbumInfoDialog{
                             var currentTime = ""
 
                             while (binding.vvTrackVideo.isPlaying) {
-                                vCurrentTime = binding.vvTrackVideo.currentPosition.toLong()
-                                currentTime = SimpleDateFormat("mm:ss").format(Date(vCurrentTime))
-                                binding.pbCountTime.progress = binding.vvTrackVideo.currentPosition
-                                binding.tvCountTime.text = ""+ currentTime +"/"+ duration +""
+                                activity.runOnUiThread({
+                                    vCurrentTime = binding.vvTrackVideo.currentPosition.toLong()
+                                    currentTime = SimpleDateFormat("mm:ss").format(Date(vCurrentTime))
+                                    binding.pbCountTime.progress = binding.vvTrackVideo.currentPosition
+                                    binding.tvCountTime.text = ""+ currentTime +"/"+ duration +""
+                                })
                                 Thread.sleep(1000)
                             }
                             progressThread.interrupt()
