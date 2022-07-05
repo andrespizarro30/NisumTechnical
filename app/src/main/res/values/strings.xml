@@ -1,0 +1,17 @@
+<resources>
+
+    <string name="app_name">NisumTechnical</string>
+
+    <string name="opening_title">i-Tunes Searcher</string>
+
+    <string name="search_music_info">Buscar Información Musical</string>
+
+    <string name="searching_music_info">Realizando Consulta</string>
+
+    <string name="play">Play</string>
+
+    <string name="stop">Stop</string>
+
+    <string name="close">Cerrar</string>
+
+</resources>
